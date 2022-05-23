@@ -1,0 +1,69 @@
+import { Meta, Story, ArgsTable } from '@storybook/addon-docs';
+import ExpansionPanels from './ExpansionPanels.vue';
+import ExpansionPanel from './ExpansionPanel.vue';
+import ExpansionPanelContent from './ExpansionPanelContent.vue';
+import ExpansionPanelHeader from './ExpansionPanelHeader.vue';
+import loremIpsum from '@/__test-utils__/loremIpsum.js';
+
+<Meta title='Components/Expansion Panels' component={ExpansionPanels} />
+
+export const Template = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  data(){ return { loremIpsum } },
+  components: { ExpansionPanels, ExpansionPanel, ExpansionPanelContent, ExpansionPanelHeader },
+  template: `
+  <ExpansionPanels v-bind="$props">
+    <ExpansionPanel>
+        <ExpansionPanelHeader>
+            Title 1
+        </ExpansionPanelHeader>
+        <ExpansionPanelContent>
+            {{ loremIpsum }}
+        </ExpansionPanelContent>
+    </ExpansionPanel>
+    <ExpansionPanel>
+        <ExpansionPanelHeader>
+            Title 2
+        </ExpansionPanelHeader>
+        <ExpansionPanelContent>
+            {{ loremIpsum }}
+        </ExpansionPanelContent>
+    </ExpansionPanel>
+  </ExpansionPanels>
+  `,
+});
+
+# How to use
+
+## Default
+```jsx
+import { ExpansionPanels, ExpansionPanel, ExpansionPanelContent, ExpansionPanelHeader } from '@friss/fl-ui-library';
+
+<template>
+  <ExpansionPanels>
+    <ExpansionPanel>
+        <ExpansionPanelHeader>
+            Title 1
+        </ExpansionPanelHeader>
+        <ExpansionPanelContent>
+            // Panel content goes here
+        </ExpansionPanelContent>
+    </ExpansionPanel>
+    <ExpansionPanel>
+        <ExpansionPanelHeader>
+            Title 2
+        </ExpansionPanelHeader>
+        <ExpansionPanelContent>
+            // Panel content goes here
+        </ExpansionPanelContent>
+    </ExpansionPanel>
+  </ExpansionPanels>
+</template>
+```
+
+## ArgsTable
+<ArgsTable of={ExpansionPanels} />
+
+<Story name='Default' args={{}}>
+  {Template.bind({})}
+</Story>
